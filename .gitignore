@@ -1,7 +1,4 @@
 node_modules/
 yarn-error.log
 __snapshots__/
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.map
+public/dist

@@ -14,13 +14,42 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// callback function for fetching data
-database.ref().on('value', (snapshot) => {
-    const data = snapshot.val();
-    console.log(`${data.name} is a ${data.job.title} at ${data.job.company}`);
-}, (e) => {
-    console.log('Error with data fetching', e);
+// Setup "expenses" with three items (description, note, amount, createdAt)
+database.ref('expenses').push({
+    description: 'Rent',
+    note: '',
+    amount: 1052,
+    createdAt: 9755451
 });
+
+database.ref('expenses').push({
+    description: 'Phone Bill',
+    note: '',
+    amount: 10252,
+    createdAt: 9755451
+});
+
+database.ref('expenses').push({
+    description: 'EB Bill',
+    note: '',
+    amount: 502,
+    createdAt: 9755451
+});
+
+// database.ref('notes/-LUstp-0gcRULDkAY3iu').remove();
+
+// database.ref('notes').push({
+//     title: 'Course Topics',
+//     body: 'React Native, AngularJs'
+// });
+
+/* callback function for fetching data */
+// database.ref().on('value', (snapshot) => {
+//     const data = snapshot.val();
+//     console.log(`${data.name} is a ${data.job.title} at ${data.job.company}`);
+// }, (e) => {
+//     console.log('Error with data fetching', e);
+// });
 
 /* Another method for fetching data start*/
 // database.ref()

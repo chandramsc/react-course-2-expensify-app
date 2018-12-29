@@ -14,25 +14,35 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// database.ref().set({
-//     name: 'Chandra Sekar',
-//     age: 27,
-//     isSingle: true,
-//     location: {
-//         city: 'Pollachi',
-//         country: 'India',
-//     }
-// }).then(() => {
-//     console.log('data is saved!');
-// }).catch((e) => {
-//     console.log('This failed.', e);
-// });
+database.ref().set({
+    name: 'Chandra Sekar',
+    age: 27,
+    stressLevel: 6,
+    job: {
+        title: 'Software developer',
+        company: 'Nano Nino'
+    },
+    location: {
+        city: 'Coimbatore',
+        country: 'India',
+    }
+}).then(() => {
+    console.log('data is saved!');
+}).catch((e) => {
+    console.log('This failed.', e);
+});
 
-database.ref('isSingle')
-    .remove()
-    .then(() => {
-        console.log('Data was removed');
-    })
-    .catch((e) => {
-        console.log('Did not remove data', e);
-    })
+database.ref().update({
+    stressLevel: 9,
+    'job/company': 'Tartlabs',
+    'location/city': 'Pollachi'
+});
+
+// database.ref('isSingle')
+//     .remove()
+//     .then(() => {
+//         console.log('Data was removed');
+//     })
+//     .catch((e) => {
+//         console.log('Did not remove data', e);
+//     })

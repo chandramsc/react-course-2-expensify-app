@@ -11,7 +11,7 @@ import './styles/style.scss';
 import AddExpensePage from './components/AddExpensePage';
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
-import './playground/promises';
+// import './playground/promises';
 
 const store = configureStore();
 

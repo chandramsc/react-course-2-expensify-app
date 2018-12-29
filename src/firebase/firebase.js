@@ -14,29 +14,49 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().set({
-    name: 'Chandra Sekar',
-    age: 27,
-    stressLevel: 6,
-    job: {
-        title: 'Software developer',
-        company: 'Nano Nino'
-    },
-    location: {
-        city: 'Coimbatore',
-        country: 'India',
-    }
-}).then(() => {
-    console.log('data is saved!');
-}).catch((e) => {
-    console.log('This failed.', e);
+// callback function for fetching data
+database.ref().on('value', (snapshot) => {
+    const data = snapshot.val();
+    console.log(`${data.name} is a ${data.job.title} at ${data.job.company}`);
+}, (e) => {
+    console.log('Error with data fetching', e);
 });
 
-database.ref().update({
-    stressLevel: 9,
-    'job/company': 'Tartlabs',
-    'location/city': 'Pollachi'
-});
+/* Another method for fetching data start*/
+// database.ref()
+//     .once('value')
+//     .then((snapshot) => {
+//         const data = snapshot.val();
+//         console.log(data);
+//     })
+//     .catch((e) => {
+//         console.log('Error fetching data', e)
+//     })
+/* Another method for fetching data end*/
+
+// database.ref().set({
+//     name: 'Chandra Sekar',
+//     age: 27,
+//     stressLevel: 6,
+//     job: {
+//         title: 'Software developer',
+//         company: 'Nano Nino'
+//     },
+//     location: {
+//         city: 'Coimbatore',
+//         country: 'India',
+//     }
+// }).then(() => {
+//     console.log('data is saved!');
+// }).catch((e) => {
+//     console.log('This failed.', e);
+// });
+
+// database.ref().update({
+//     stressLevel: 9,
+//     'job/company': 'Tartlabs',
+//     'location/city': 'Pollachi'
+// });
 
 // database.ref('isSingle')
 //     .remove()

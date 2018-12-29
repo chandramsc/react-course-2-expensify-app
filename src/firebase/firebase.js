@@ -14,25 +14,56 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+// child_removed
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// child_changed
+database.ref('expenses').on('child_changed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// child_added
+database.ref('expenses').on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+
+// database.ref('expenses')
+//     .once('value')
+//     .then((snapshot) => {
+//         const expenses = [];
+
+//         snapshot.forEach(function (childSnapshot) {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             });
+//         });
+
+//         console.log(expenses);
+//     })
+
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach(function (childSnapshot) {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+
+//     console.log(expenses);
+// });
+
+
 // Setup "expenses" with three items (description, note, amount, createdAt)
 database.ref('expenses').push({
-    description: 'Rent',
+    description: 'Rent 2',
     note: '',
     amount: 1052,
-    createdAt: 9755451
-});
-
-database.ref('expenses').push({
-    description: 'Phone Bill',
-    note: '',
-    amount: 10252,
-    createdAt: 9755451
-});
-
-database.ref('expenses').push({
-    description: 'EB Bill',
-    note: '',
-    amount: 502,
     createdAt: 9755451
 });
 

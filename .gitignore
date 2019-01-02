@@ -2,3 +2,5 @@ node_modules/
 yarn-error.log
 __snapshots__/
 public/dist
+.env.test
+.env.developement

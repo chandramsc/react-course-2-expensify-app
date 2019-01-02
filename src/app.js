@@ -10,7 +10,7 @@ import 'normalize.css/normalize.css';
 import './styles/style.scss';
 import AddExpensePage from './components/AddExpensePage';
 import 'react-dates/lib/css/_datepicker.css';
-import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 // import './playground/promises';
 
 const store = configureStore();
@@ -25,6 +25,14 @@ ReactDOM.render(<p>Loading....</p>, document.getElementById('app'));
 
 store.dispatch(startSetExpenses()).then(() => {
     ReactDOM.render(jsx, document.getElementById('app'));
+});
+
+firebase.auth().onAuthStateChanged((user) => {
+    if(user) {
+        console.log("login in");
+    } else {
+        console.log("login out");
+    }
 });
 
 

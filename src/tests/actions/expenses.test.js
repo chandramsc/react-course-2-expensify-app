@@ -31,7 +31,7 @@ test('should setup remove expense action object', () => {
     expect(action).toEqual({
         type: 'REMOVE_EXPENSE',
         id: '123abc'
-    })
+    });
 });
 
 test('should remove expense from firebase', (done) => {
